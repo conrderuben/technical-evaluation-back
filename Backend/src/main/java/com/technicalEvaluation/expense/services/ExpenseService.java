@@ -16,7 +16,7 @@ public class ExpenseService {
 
 	@Autowired
 	private ExpenseRepository expenseRepository;
-
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -33,34 +33,49 @@ public class ExpenseService {
 		List<Expense> expenses = expenseRepository.findAll();
 		List<User> users = userRepository.findUsersByTeamId(id);
 
-		// Calculated the global amount for all expenses
-		for (Expense expense : expenses) {
-			totalAmount += expense.getAmount();
-		}
-
+		totalAmount = calculateTotalAmount(expenses);
+		
 		for (User user : users) {
 			HashMap<String, Object> userBalance = new HashMap<>();
 
-			// Returning the userAmount to 0 on each user
 			userAmount = 0.00;
 
-			// Getting all the expenses for each user
 			List<Expense> userExpenseList = expenseRepository.findByUserId(user.getId());
 
-			// Calculating the amount of the user
-			for (Expense e : userExpenseList) {
-				userAmount += e.getAmount();
-			}
+			userAmount = calculateUserAmount(userExpenseList);
+			
+			double difference = calculateDiference(totalAmount, users, userAmount);
 
-			// Calculating the difference
-			double difference = Math.round(((-totalAmount / users.size()) + userAmount) * 100.00) / 100.00;
-
-			// Adding the user balance to the total balance
 			userBalance.put("id", user.getId());
 			userBalance.put("amount", difference);
 			totalBalance.add(userBalance);
 		}
 		return totalBalance;
+	}
+	
+	public double calculateTotalAmount(List<Expense> expenses) {
+		Double totalAmount = 0.00;
+		
+		for (Expense e : expenses) {
+			totalAmount += e.getAmount();
+		}
+		
+		return totalAmount;
+	}
+	
+	public double calculateUserAmount(List<Expense> userExpenseList) {
+		Double userAmount = 0.00;
+		
+		for (Expense e : userExpenseList) {
+			userAmount += e.getAmount();
+		}
+		
+		return userAmount;
+	}
+	
+	public double calculateDiference(Double totalAmount, List<User> users, Double userAmount ) {
+		
+		return Math.round(((-totalAmount / users.size()) + userAmount) * 100.00) / 100.00;
 	}
 
 	public Expense createExpense(@RequestParam Expense expense) {
