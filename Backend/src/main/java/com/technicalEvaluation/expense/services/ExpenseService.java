@@ -25,7 +25,6 @@ public class ExpenseService {
 	}
 
 	public ArrayList<HashMap> getBalance(@RequestParam Long id) {
-
 		Double totalAmount = 0.00;
 		Double userAmount = 0.00;
 		ArrayList<HashMap> totalBalance = new ArrayList();
@@ -37,9 +36,7 @@ public class ExpenseService {
 		
 		for (User user : users) {
 			HashMap<String, Object> userBalance = new HashMap<>();
-
 			userAmount = 0.00;
-
 			List<Expense> userExpenseList = expenseRepository.findByUserId(user.getId());
 
 			userAmount = calculateUserAmount(userExpenseList);
@@ -51,7 +48,7 @@ public class ExpenseService {
 			totalBalance.add(userBalance);
 		}
 		return totalBalance;
-	}
+	}		
 	
 	public double calculateTotalAmount(List<Expense> expenses) {
 		Double totalAmount = 0.00;
@@ -59,7 +56,6 @@ public class ExpenseService {
 		for (Expense e : expenses) {
 			totalAmount += e.getAmount();
 		}
-		
 		return totalAmount;
 	}
 	
@@ -69,12 +65,10 @@ public class ExpenseService {
 		for (Expense e : userExpenseList) {
 			userAmount += e.getAmount();
 		}
-		
 		return userAmount;
 	}
 	
 	public double calculateDiference(Double totalAmount, List<User> users, Double userAmount ) {
-		
 		return Math.round(((-totalAmount / users.size()) + userAmount) * 100.00) / 100.00;
 	}
 
