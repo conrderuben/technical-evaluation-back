@@ -1,31 +1,62 @@
 package com.technicalEvaluation.expense.repository;
 
+import com.technicalEvaluation.expense.entities.Expense;
+import com.technicalEvaluation.team.entities.Team;
+import com.technicalEvaluation.team.repository.TeamRepository;
+import com.technicalEvaluation.user.entities.User;
+import com.technicalEvaluation.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@TestPropertySource(locations="classpath:test.properties")
 class ExpenseRepositoryIT {
 
     @Autowired
     private ExpenseRepository expenseRepository;
 
+    @Autowired
+    private TeamRepository teamRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
     @Test
     void should_giveExpense_whenFindById() {
-        /*Expense expense  = new Expense(15D, "Cinema", new Date(), new User("Ruben"), new Team());
+        Expense expense  = new Expense(15D, "Cinema", new Date(), new User("Ruben"), new Team());
         expenseRepository.save(expense);
         Expense expenseDB = expenseRepository.findById(expense.getId()).get();
+        assertNotNull(expenseDB);
+    }
 
-        assertNotNull(expenseDB);*/
-        assertTrue(true);
+    @Test
+    void should_deleteExpense() {
+        Expense expense  = new Expense(15D, "Cinema", new Date(), new User("Ruben"), new Team());
+        expenseRepository.save(expense);
+        expenseRepository.delete(expense);
+        Optional<Expense> expenseDeleted = expenseRepository.findById(expense.getId());
+        assertFalse(expenseDeleted.isPresent());
+    }
+
+    @Test
+    void should_returnExpense_findByTeamId() {
+        Team team = new Team();
+        teamRepository.save(team);
+        User user = new User("Ruben");
+        userRepository.save(user);
+        Expense expense  = new Expense(15D, "Cinema", new Date(), user, team);
+        expenseRepository.save(expense);
+        List<Expense> expenseList = new ArrayList<>();
+        expenseList.add(expense);
+        List<Expense> expenseListDB = expenseRepository.findByTeamId(expense.getTeam().getId());
+        assertEquals(expenseList, expenseListDB);
     }
 }
