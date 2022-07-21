@@ -111,7 +111,7 @@
 				<executions>
 					<execution>
 						<id>start</id>
-						<phase>initialize</phase>
+						<phase>pre-integration-test</phase>
 						<goals>
 							<goal>start</goal>
 						</goals>
