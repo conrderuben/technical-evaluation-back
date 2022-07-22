@@ -8,7 +8,7 @@
 		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.prueba-tecnica</groupId>
+	<groupId>com.technical-evaluation</groupId>
 	<artifactId>Backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Backend</name>
@@ -47,7 +47,6 @@
 		    <version>1.10.19</version>
 		    <scope>test</scope>
 		</dependency>
-
 		<!--Dependencies for integration tests-->
 		<dependency>
 			<groupId>junit</groupId>
@@ -55,7 +54,6 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -64,7 +62,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
@@ -78,12 +75,10 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>io.fabric8</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.40.1</version>
-
 				<configuration>
 					<verbose>true</verbose>
 					<images>
@@ -127,6 +122,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
