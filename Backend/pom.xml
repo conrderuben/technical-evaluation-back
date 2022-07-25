@@ -2,13 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<packaging>pom</packaging>
+	<modules>
+		<module>application</module>
+		<module>repository</module>
+		<module>controller</module>
+		<module>core</module>
+	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.prueba-tecnica</groupId>
+	<groupId>com.technical-evaluation</groupId>
 	<artifactId>Backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Backend</name>
@@ -40,6 +47,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
 		<dependency>
 		    <groupId>org.mockito</groupId>
@@ -55,7 +63,6 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -83,7 +90,6 @@
 				<groupId>io.fabric8</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.40.1</version>
-
 				<configuration>
 					<verbose>true</verbose>
 					<images>
@@ -127,6 +133,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
