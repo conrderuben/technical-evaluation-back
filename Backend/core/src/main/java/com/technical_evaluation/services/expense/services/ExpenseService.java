@@ -1,8 +1,4 @@
-package com.technical_evaluation.services.user.services;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+package com.technical_evaluation.services.expense.services;
 
 import com.technical_evaluation.expense.entities.Expense;
 import com.technical_evaluation.expense.repository.ExpenseRepository;
@@ -11,6 +7,10 @@ import com.technical_evaluation.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class ExpenseService {

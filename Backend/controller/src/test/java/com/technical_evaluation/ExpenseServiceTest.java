@@ -1,8 +1,6 @@
 package com.technical_evaluation;
 
-
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.any;
 
@@ -13,10 +11,10 @@ import java.util.HashMap;
 
 import com.technical_evaluation.expense.entities.Expense;
 import com.technical_evaluation.expense.repository.ExpenseRepository;
-import com.technical_evaluation.services.user.services.ExpenseService;
 import com.technical_evaluation.team.entities.Team;
 import com.technical_evaluation.user.entities.User;
 
+import com.technical_evaluation.user.expense.services.ExpenseService;
 import com.technical_evaluation.user.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

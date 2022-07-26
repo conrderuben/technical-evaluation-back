@@ -1,9 +1,9 @@
 package com.technical_evaluation.user.controller;
 
+import com.technical_evaluation.services.user.services.UserService;
 import com.technical_evaluation.user.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.technical_evaluation.services.expense.services.UserService;
 
 import java.util.List;
 

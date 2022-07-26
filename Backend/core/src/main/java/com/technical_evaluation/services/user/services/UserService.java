@@ -1,4 +1,4 @@
-package com.technical_evaluation.services.expense.services;
+package com.technical_evaluation.services.user.services;
 
 import com.technical_evaluation.team.entities.Team;
 import com.technical_evaluation.team.repository.TeamRepository;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-
 
 @Service
 public class UserService {
