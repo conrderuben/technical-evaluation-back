@@ -6,10 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
 @SpringBootApplication
-/*@EntityScan(basePackages = {"com.technical_evaluation.*"})
-@EnableJpaRepositories(basePackages = "{com.technical_evaluation.*}")*/
 public class BackendApplication {
 
 	

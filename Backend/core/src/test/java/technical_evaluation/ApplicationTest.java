@@ -1,4 +1,4 @@
-package com.technical_evaluation;
+package technical_evaluation;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

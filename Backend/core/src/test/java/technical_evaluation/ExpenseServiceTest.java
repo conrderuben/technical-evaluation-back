@@ -1,26 +1,25 @@
-package com.technical_evaluation;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.any;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
+package technical_evaluation;
 
 import com.technical_evaluation.expense.entities.Expense;
 import com.technical_evaluation.expense.repository.ExpenseRepository;
+import com.technical_evaluation.services.expense.services.ExpenseService;
 import com.technical_evaluation.team.entities.Team;
 import com.technical_evaluation.user.entities.User;
-
-import com.technical_evaluation.user.expense.services.ExpenseService;
 import com.technical_evaluation.user.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
 class ExpenseServiceTest {
 
     @Mock
